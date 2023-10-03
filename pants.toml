@@ -1,0 +1,66 @@
+[GLOBAL]
+pants_version = "2.17.0"
+
+# Register functionality from these backends.
+backend_packages = [
+    "pants.backend.docker",
+    "pants.backend.python",
+    "pants.backend.build_files.fmt.black",
+    "pants.backend.python.lint.black",
+    "pants.backend.experimental.python.lint.ruff",
+    "pants.backend.python.lint.docformatter",
+    # "pants.backend.python.typecheck.mypy",
+]
+
+# Pants `goal` argument settings
+[update-build-files]
+fmt = false
+
+[generate-lockfiles]
+diff = true
+
+# Pants `sub system` settings
+[anonymous-telemetry]
+enabled = false
+
+[environments-preview.names]
+macos = "//:local_env_macos"
+docker = "//:docker_env_linux"
+
+[source]
+root_patterns = ["/"]
+
+[python]
+interpreter_constraints = ["CPython==3.10.*"]
+enable_resolves = true
+
+[python.resolves]
+python-default = "3rdparty/python/python-default.lock"
+black = "3rdparty/fmt/black.lock"
+coverage-py = "3rdparty/test/coverage-py.lock"
+docformatter = "3rdparty/fmt/docformatter.lock"
+pytest = "3rdparty/test/pytest.lock"
+ruff = "3rdparty/lint/ruff.lock"
+
+[black]
+install_from_resolve = "black"
+requirements = ["//3rdparty/fmt:reqs_black"]
+interpreter_constraints = ["CPython==3.10.*"]
+
+[coverage-py]
+install_from_resolve = "coverage-py"
+requirements = ["//3rdparty/test:reqs_coverage-py"]
+report = ["xml", "console"]
+
+[docformatter]
+install_from_resolve = "docformatter"
+requirements = ["//3rdparty/fmt:reqs_docformatter"]
+
+[pytest]
+install_from_resolve = "pytest"
+requirements = ["//3rdparty/test:reqs_pytest"]
+args = ["-vv", "--no-header"]
+
+[ruff]
+install_from_resolve = "ruff"
+requirements = ["//3rdparty/lint:reqs_ruff"]
