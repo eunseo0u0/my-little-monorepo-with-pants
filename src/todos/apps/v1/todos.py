@@ -87,7 +87,7 @@ async def retrieve_todo_items() -> JSONResponse:
 
 
 @app.delete(
-    "/delete/{todo_id}}",
+    "/delete/{todo_id}",
     tags=["delete-todo"],
     summary="Delete TODO item.",
 )
