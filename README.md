@@ -3,7 +3,7 @@
 ## Items
 - [x] Pants settings
 - [x] 3rdparty setting
-- [ ] linting/formatting setting 
+- [x] linting/formatting setting 
 - [ ] `grid_maker` - logic
 - [ ] `grid_maker` - add docstrings
 - [ ] `grid_maker` - test
