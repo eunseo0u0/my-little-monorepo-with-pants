@@ -1,11 +1,11 @@
 import datetime
 
-from fastapi import APIRouter, Body
+from fastapi import Body, FastAPI
 from fastapi.responses import JSONResponse
 
-from src.todos.models.v1.todos import TodoItem, TodoRetrieve
+from src.todos.models.v1.todos import RetreiveResponse, TodoItem
 
-app = APIRouter()
+app = FastAPI()
 
 todo_list: list[TodoItem] = []
 
@@ -21,21 +21,10 @@ async def add_todo_item(
         },
     )
 ) -> JSONResponse:
-    try:
-        todo_item.id = len(todo_list)
-        todo_item.created_at = datetime.datetime.utcnow()
-        todo_list.append(todo_item)
-        return JSONResponse(
-            status_code=200, content={"status": "Add item successfully."}
-        )
-    except OSError as os_error:
-        return JSONResponse(
-            status_code=400, content={"error": "OS error: " + str(os_error)}
-        )
-    except ValueError as val_error:
-        return JSONResponse(
-            status_code=400, content={"error": "Value error: " + str(val_error)}
-        )
+    todo_item.id = len(todo_list)
+    todo_item.created_at = datetime.datetime.utcnow()
+    todo_list.append(todo_item)
+    return JSONResponse(status_code=200, content={"status": "Add item successfully."})
 
 
 @app.put("/update/{todo_id}", tags=["update-todo"], summary="Update TODO item.")
@@ -50,40 +39,25 @@ async def update_todo_item(
         },
     ),
 ) -> JSONResponse:
-    try:
-        for todo in todo_list:
-            if todo.id == todo_id:
-                todo.title = todo_item.title
-                todo.description = todo_item.description
-                todo.completed = todo_item.completed
-                todo.updated_at = datetime.datetime.utcnow()
-                todo_list[todo_id] = todo
-                return JSONResponse(
-                    status_code=200, content={"status": "Update item successfully."}
-                )
-    except OSError as os_error:
-        return JSONResponse(
-            status_code=400, content={"error": "OS error: " + str(os_error)}
-        )
-    except ValueError as val_error:
-        return JSONResponse(
-            status_code=400, content={"error": "Value error: " + str(val_error)}
-        )
+    for i, todo in enumerate(todo_list):
+        if todo.id == todo_id:
+            todo.title = todo_item.title
+            todo.description = todo_item.description
+            todo.completed = todo_item.completed
+            todo.updated_at = datetime.datetime.utcnow()
+            todo_list[i] = todo
+            return JSONResponse(
+                status_code=200, content={"status": "Update item successfully."}
+            )
 
 
 @app.get(
     "/retrieve",
-    response_model=TodoRetrieve,
     tags=["retrieve-todo"],
     summary="Retrieve TODO items.",
 )
-async def retrieve_todo_items() -> JSONResponse:
-    try:
-        return todo_list
-    except OSError as os_error:
-        return JSONResponse(
-            status_code=400, content={"error": "OS error: " + str(os_error)}
-        )
+async def retrieve_todo_items() -> dict:
+    return {"todo_items": todo_list}
 
 
 @app.delete(
@@ -92,18 +66,9 @@ async def retrieve_todo_items() -> JSONResponse:
     summary="Delete TODO item.",
 )
 async def delete_todo_item(todo_id: int) -> JSONResponse:
-    try:
-        for todo in todo_list:
-            if todo.id == todo_id:
-                todo_list.pop(todo_id)
-                return JSONResponse(
-                    status_code=200, content={"status": "Delete item successfully."}
-                )
-    except OSError as os_error:
-        return JSONResponse(
-            status_code=400, content={"error": "OS error: " + str(os_error)}
-        )
-    except ValueError as val_error:
-        return JSONResponse(
-            status_code=400, content={"error": "Value error: " + str(val_error)}
-        )
+    for i, todo in enumerate(todo_list):
+        if todo.id == todo_id:
+            todo_list.pop(i)
+            return JSONResponse(
+                status_code=200, content={"status": "Delete item successfully."}
+            )
