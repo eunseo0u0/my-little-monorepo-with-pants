@@ -35,32 +35,32 @@ interpreter_constraints = ["CPython==3.10.*"]
 enable_resolves = true
 
 [python.resolves]
-python-default = "3rdparty/python/python-default.lock"
-black = "3rdparty/fmt/black.lock"
-coverage-py = "3rdparty/test/coverage-py.lock"
-docformatter = "3rdparty/fmt/docformatter.lock"
-pytest = "3rdparty/test/pytest.lock"
-ruff = "3rdparty/lint/ruff.lock"
+python-default = "3rdparty/python-default.lock"
+black = "3rdparty/black.lock"
+coverage-py = "3rdparty/coverage-py.lock"
+docformatter = "3rdparty/docformatter.lock"
+pytest = "3rdparty/pytest.lock"
+ruff = "3rdparty/ruff.lock"
 
 [black]
 install_from_resolve = "black"
-requirements = ["//3rdparty/fmt:reqs_black"]
+requirements = ["//3rdparty:reqs_black"]
 interpreter_constraints = ["CPython==3.10.*"]
 
 [coverage-py]
 install_from_resolve = "coverage-py"
-requirements = ["//3rdparty/test:reqs_coverage-py"]
+requirements = ["//3rdparty:reqs_coverage-py"]
 report = ["xml", "console"]
 
 [docformatter]
 install_from_resolve = "docformatter"
-requirements = ["//3rdparty/fmt:reqs_docformatter"]
+requirements = ["//3rdparty:reqs_docformatter"]
 
 [pytest]
 install_from_resolve = "pytest"
-requirements = ["//3rdparty/test:reqs_pytest"]
+requirements = ["//3rdparty:reqs_pytest"]
 args = ["-vv", "--no-header"]
 
 [ruff]
 install_from_resolve = "ruff"
-requirements = ["//3rdparty/lint:reqs_ruff"]
+requirements = ["//3rdparty:reqs_ruff"]
