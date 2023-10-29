@@ -10,6 +10,7 @@
 //   ],
 //   "generated_with_requirements": [
 //     "pytest-cov==4.1.0",
+//     "pytest-mock==3.12.0",
 //     "pytest==7.4.0"
 //   ],
 //   "manylinux": "manylinux2014",
@@ -233,6 +234,29 @@
           "artifacts": [
             {
               "algorithm": "sha256",
+              "hash": "0972719a7263072da3a21c7f4773069bcc7486027d7e8e1f81d98a47e701bc4f",
+              "url": "https://files.pythonhosted.org/packages/b9/25/b29fd10dd062cf41e66787a7951b3842881a2a2d7e3a41fcbb58a8466046/pytest_mock-3.12.0-py3-none-any.whl"
+            },
+            {
+              "algorithm": "sha256",
+              "hash": "31a40f038c22cad32287bb43932054451ff5583ff094bca6f675df2f8bc1a6e9",
+              "url": "https://files.pythonhosted.org/packages/b3/96/25588c55fbe330b751bd7c7d723c3544957566bc090f6d506551b514f488/pytest-mock-3.12.0.tar.gz"
+            }
+          ],
+          "project_name": "pytest-mock",
+          "requires_dists": [
+            "pre-commit; extra == \"dev\"",
+            "pytest-asyncio; extra == \"dev\"",
+            "pytest>=5.0",
+            "tox; extra == \"dev\""
+          ],
+          "requires_python": ">=3.8",
+          "version": "3.12.0"
+        },
+        {
+          "artifacts": [
+            {
+              "algorithm": "sha256",
               "hash": "939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc",
               "url": "https://files.pythonhosted.org/packages/97/75/10a9ebee3fd790d20926a90a2547f0bf78f371b2f13aa822c759680ca7b9/tomli-2.0.1-py3-none-any.whl"
             },
@@ -257,6 +281,7 @@
   "prefer_older_binary": false,
   "requirements": [
     "pytest-cov==4.1.0",
+    "pytest-mock==3.12.0",
     "pytest==7.4.0"
   ],
   "requires_python": [
