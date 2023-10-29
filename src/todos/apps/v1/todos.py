@@ -26,6 +26,14 @@ async def add_todo_item(
         },
     )
 ) -> JSONResponse:
+    """Add todo item.
+
+    Args:
+        request: Todo item request including title, description and completed.
+
+    Returns:
+        JSONResponse with a status code and a detailed message.
+    """
     todo_metadata: TodoMetadata = TodoMetadata(
         id=uuid4().hex,
         title=request.title,
@@ -52,6 +60,15 @@ async def update_todo_item(
         },
     ),
 ) -> JSONResponse:
+    """Update todo item.
+
+    Args:
+        todo_id: An ID of todo item to be updated.
+        request: Todo item request including title, description and completed.
+
+    Returns:
+        JSONResponse with a status code and a detailed message.
+    """
     for i, todo in enumerate(todo_list):
         if todo.id == todo_id:
             todo.title = request.title
@@ -72,6 +89,11 @@ async def update_todo_item(
     summary="Retrieve TODO items.",
 )
 async def retrieve_todo_items() -> RetreiveResponse:
+    """Retrieve todo items.
+
+    Returns:
+        RetreiveResponse with a list of todo items.
+    """
     return RetreiveResponse(todo_list=todo_list)
 
 
@@ -81,6 +103,14 @@ async def retrieve_todo_items() -> RetreiveResponse:
     summary="Delete TODO item.",
 )
 async def delete_todo_item(todo_id: str) -> JSONResponse:
+    """Delete todo item.
+
+    Args:
+        todo_id: An ID of todo item to be deleted.
+
+    Returns:
+        JSONResponse with a status code and a detailed message.
+    """
     for i, todo in enumerate(todo_list):
         if todo.id == todo_id:
             todo_list.pop(i)
