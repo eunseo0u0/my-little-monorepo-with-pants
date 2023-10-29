@@ -6,8 +6,8 @@ from fastapi.responses import JSONResponse
 
 from src.todos.models.v1.todos import (
     RetreiveResponse,
-    TodoItem,
     TodoMetadata,
+    TodoRequest,
 )
 
 app = FastAPI()
@@ -17,9 +17,9 @@ todo_list: list[TodoMetadata] = []
 
 @app.post("/add", tags=["add-todo"], summary="Add TODO item.")
 async def add_todo_item(
-    todo_item: TodoItem = Body(
+    request: TodoRequest = Body(
         ...,
-        examples={
+        example={
             "title": "An example",
             "description": "This is an example.",
             "completed": False,
@@ -28,36 +28,40 @@ async def add_todo_item(
 ) -> JSONResponse:
     todo_metadata: TodoMetadata = TodoMetadata(
         id=uuid4().hex,
-        title=todo_item.title,
-        description=todo_item.description,
-        completed=todo_item.completed,
+        title=request.title,
+        description=request.description,
+        completed=request.completed,
         created_at=datetime.datetime.utcnow(),
     )
     todo_list.append(todo_metadata)
-    return JSONResponse(status_code=200, content={"status": "Add item successfully."})
+    return JSONResponse(
+        status_code=200,
+        content={"detail": f"Add item: '{todo_metadata.id}' successfully."},
+    )
 
 
 @app.put("/update/{todo_id}", tags=["update-todo"], summary="Update TODO item.")
 async def update_todo_item(
     todo_id: str,
-    todo_item: TodoItem = Body(
+    request: TodoRequest = Body(
         ...,
-        examples={
+        example={
             "title": "An example",
             "description": "This is an example.",
-            "completed": False,
+            "completed": True,
         },
     ),
 ) -> JSONResponse:
     for i, todo in enumerate(todo_list):
         if todo.id == todo_id:
-            todo.title = todo_item.title
-            todo.description = todo_item.description
-            todo.completed = todo_item.completed
+            todo.title = request.title
+            todo.description = request.description
+            todo.completed = request.completed
             todo.updated_at = datetime.datetime.utcnow()
             todo_list[i] = todo
             return JSONResponse(
-                status_code=200, content={"status": "Update item successfully."}
+                status_code=200,
+                content={"detail": f"Update item: '{todo_id}' successfully."},
             )
 
 
@@ -81,5 +85,6 @@ async def delete_todo_item(todo_id: str) -> JSONResponse:
         if todo.id == todo_id:
             todo_list.pop(i)
             return JSONResponse(
-                status_code=200, content={"status": "Delete item successfully."}
+                status_code=200,
+                content={"detail": f"Delete item: '{todo_id}' successfully."},
             )
