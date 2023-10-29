@@ -16,6 +16,7 @@ app.mount("/todos/v1", app_todos_v1)
 
 @app.get("/apis")
 def apis(request: Request) -> list[str]:
+    """Return all available APIs."""
     routes = {route.path for route in request.app.routes}
     routes -= {"/openapi.json", "/docs", "/redoc", "/docs/oauth2-redirect", "/apps"}
     return sorted(list(routes))
