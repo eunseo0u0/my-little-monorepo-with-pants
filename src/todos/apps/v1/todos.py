@@ -70,10 +70,10 @@ async def update_todo_item(
         JSONResponse with a status code and a detailed message.
     """
     try:
-        todo_db[item_id].title = request.title
-        todo_db[item_id].description = request.description
-        todo_db[item_id].completed = request.completed
-        todo_db[item_id].updated_at = datetime.datetime.utcnow()
+        todo_db[item_id]["title"] = request.title
+        todo_db[item_id]["description"] = request.description
+        todo_db[item_id]["completed"] = request.completed
+        todo_db[item_id]["updated_at"] = datetime.datetime.utcnow()
         return JSONResponse(
             status_code=200,
             content={"detail": f"Update item: '{item_id}' successfully."},
@@ -118,7 +118,7 @@ async def delete_todo_item(item_id: str) -> JSONResponse:
         todo_db.pop(item_id)
         return JSONResponse(
             status_code=200,
-            content={"detail": f"Update item: '{item_id}' successfully."},
+            content={"detail": f"Delete item: '{item_id}' successfully."},
         )
     except KeyError:
         return JSONResponse(
