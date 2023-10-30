@@ -101,7 +101,7 @@ async def retrieve_todo_items() -> RetreiveResponse:
 
 
 @app.delete(
-    "/delete/{todo_id}",
+    "/delete/{item_id}",
     tags=["delete-todo"],
     summary="Delete TODO item.",
 )
