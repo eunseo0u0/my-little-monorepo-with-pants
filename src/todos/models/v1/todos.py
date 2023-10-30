@@ -14,7 +14,7 @@ class TodoMetadata(BaseModel):
 
 
 class TodoRequest(BaseModel):
-    """Todo request model used in /add and /update."""
+    """Request model for endpoints, /add and /update."""
 
     title: str = Field(..., title="Title", max_length=100)
     description: str = Field(..., title="Description", max_length=100)
@@ -22,6 +22,6 @@ class TodoRequest(BaseModel):
 
 
 class RetreiveResponse(BaseModel):
-    """Retrieve response model used in /retrieve."""
+    """Response model for an endpoint, /retrieve."""
 
     todo_items: dict[str, TodoMetadata] = Field(default={}, title="TODO items")
