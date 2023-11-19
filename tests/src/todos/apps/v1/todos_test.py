@@ -70,7 +70,7 @@ class TestTodosAPI:
             json={"title": "", "description": "", "completed": False},
         )
         assert response.status_code == 404
-        assert response.json() == {"detail": "Item: '-1' not found."}
+        assert response.json() == {"detail": "Item: '-1' is not found."}
 
     def test_retrieve_api(self, mocker) -> None:
         """Test `retrieve` API."""
@@ -96,4 +96,4 @@ class TestTodosAPI:
             url="/delete/-1",
         )
         assert response.status_code == 404
-        assert response.json() == {"detail": "Item: '-1' not found."}
+        assert response.json() == {"detail": "Item: '-1' is not found."}

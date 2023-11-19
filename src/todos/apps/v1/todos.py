@@ -82,7 +82,7 @@ async def update_todo_item(
     except KeyError:
         return JSONResponse(
             status_code=404,
-            content={"detail": f"Item: '{item_id}' not found."},
+            content={"detail": f"Item: '{item_id}' is not found."},
         )
 
 
@@ -124,5 +124,5 @@ async def delete_todo_item(item_id: str) -> JSONResponse:
     except KeyError:
         return JSONResponse(
             status_code=404,
-            content={"detail": f"Item: '{item_id}' not found."},
+            content={"detail": f"Item: '{item_id}' is not found."},
         )
