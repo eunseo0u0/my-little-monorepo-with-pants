@@ -39,6 +39,7 @@ async def add_todo_item(
         description=request.description,
         completed=request.completed,
         created_at=datetime.datetime.utcnow(),
+        updated_at=datetime.datetime.utcnow(),
     )
     item_id: str = uuid4().hex
     todo_db[item_id] = todo_metadata
