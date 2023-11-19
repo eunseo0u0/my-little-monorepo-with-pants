@@ -75,6 +75,7 @@ class TestTodosAPI:
     def test_retrieve_api(self, mocker) -> None:
         """Test `retrieve` API."""
         mocker.patch("src.todos.apps.v1.todos.todo_db", self.todo_db)
+
         response = self.client.get(url="/retrieve")
         assert response.status_code == 200
         assert response.json() == {"todo_items": self.todo_db}
@@ -82,6 +83,7 @@ class TestTodosAPI:
     def test_delete_api_succeeded(self, mocker) -> None:
         """Test `delete` API with a valid request."""
         mocker.patch("src.todos.apps.v1.todos.todo_db", self.todo_db)
+
         response = self.client.delete(url=f"/delete/{self.item_id}")
         assert response.status_code == 200
         assert response.json() == {
