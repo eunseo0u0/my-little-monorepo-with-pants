@@ -8,6 +8,6 @@ local_environment(
 
 docker_environment(
     name="docker_env_linux",
-    platform="linux_x86_64",
-    image="python:3.10-bullseye",
+    platform="linux_arm64",
+    image="python:3.10-slim",
 )

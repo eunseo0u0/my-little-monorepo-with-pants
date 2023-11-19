@@ -12,9 +12,6 @@ backend_packages = [
 ]
 
 # Pants `goal` argument settings
-[update-build-files]
-fmt = false
-
 [generate-lockfiles]
 diff = true
 
@@ -25,6 +22,10 @@ enabled = false
 [environments-preview.names]
 macos = "//:local_env_macos"
 docker = "//:docker_env_linux"
+
+[docker]
+build_args = ["APP", "GIT_COMMIT", "PHASE"]
+run_args = "--rm -it"
 
 [source]
 root_patterns = ["/"]
