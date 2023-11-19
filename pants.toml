@@ -1,5 +1,5 @@
 [GLOBAL]
-pants_version = "2.17.0"
+pants_version = "2.18.0"
 
 # Register functionality from these backends.
 backend_packages = [
@@ -9,7 +9,6 @@ backend_packages = [
     "pants.backend.python.lint.black",
     "pants.backend.experimental.python.lint.ruff",
     "pants.backend.python.lint.docformatter",
-    # "pants.backend.python.typecheck.mypy",
 ]
 
 # Pants `goal` argument settings
