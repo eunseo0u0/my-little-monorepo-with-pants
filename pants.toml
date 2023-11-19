@@ -7,8 +7,8 @@ backend_packages = [
     "pants.backend.python",
     "pants.backend.build_files.fmt.black",
     "pants.backend.python.lint.black",
-    "pants.backend.experimental.python.lint.ruff",
     "pants.backend.python.lint.docformatter",
+    "pants.backend.experimental.python.lint.ruff",
 ]
 
 # Pants `goal` argument settings
