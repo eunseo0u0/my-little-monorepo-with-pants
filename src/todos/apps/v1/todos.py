@@ -19,7 +19,7 @@ todo_db: dict[str, TodoMetadata] = {}
 async def add_todo_item(
     request: TodoRequest = Body(
         ...,
-        example={
+        examples={
             "title": "An example",
             "description": "This is an example.",
             "completed": False,
@@ -54,7 +54,7 @@ async def update_todo_item(
     item_id: str,
     request: TodoRequest = Body(
         ...,
-        example={
+        examples={
             "title": "An example",
             "description": "This is an example.",
             "completed": True,
