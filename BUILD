@@ -3,7 +3,7 @@ __defaults__(all=dict(environment="__local__"))
 local_environment(
     name="local_env_macos",
     compatible_platforms=["macos_arm64"],
-    fallback_environment="docker_env_linux",
+    fallback_environment="docker",
 )
 
 docker_environment(
