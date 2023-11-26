@@ -21,7 +21,8 @@ enabled = false
 
 [environments-preview.names]
 macos = "//:local_env_macos"
-docker = "//:docker_env_linux"
+docker_linux_x86_64 = "//:docker_env_linux_x86_64"
+docker_linux_arm64 = "//:docker_env_linux_arm64"
 
 [docker]
 build_args = ["APP", "ENVIRONMENT", "GIT_COMMIT",]

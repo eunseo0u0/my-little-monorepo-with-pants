@@ -6,7 +6,7 @@ pex_binary(
     layout="packed",
     include_sources=False,
     include_tools=True,
-    environment="docker",
+    environment="docker_linux_arm64",
 )
 
 pex_binary(
@@ -15,7 +15,7 @@ pex_binary(
     layout="packed",
     include_requirements=False,
     include_tools=True,
-    environment="docker",
+    environment="docker_linux_arm64",
 )
 
 docker_image(

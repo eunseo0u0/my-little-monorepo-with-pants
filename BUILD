@@ -10,7 +10,14 @@ local_environment(
 )
 
 docker_environment(
-    name="docker_env_linux",
+    name="docker_env_linux_arm64",
     platform="linux_arm64",
+    image="python:3.10-slim",
+    fallback_environment="docker_linux_x86_64",
+)
+
+docker_environment(
+    name="docker_env_linux_x86_64",
+    platform="linux_x86_64",
     image="python:3.10-slim",
 )
