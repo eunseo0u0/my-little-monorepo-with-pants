@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "src/todos/**"
+      - "!src/todos/README.md"
       - "./github/workflows/todos.yaml"
   push:
     branches: 
