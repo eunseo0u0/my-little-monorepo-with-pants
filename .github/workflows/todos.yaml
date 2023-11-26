@@ -1,0 +1,33 @@
+name: Build and Publish - todos
+
+on:
+  pull_request:
+    paths:
+      - "src/todos/**"
+  push:
+    branches: 
+      - main
+      - "releases/**"
+    paths:
+      - "src/todos/**"
+jobs:
+  build:
+    uses: ./.github/workflows/build.yaml
+    with:
+      PROJECT_NAME: todos
+  publish-stage:
+    if: ${{ github.event.push.ref == 'refs/heads/main' }}
+    needs: [build]
+    uses: ./.github/workflows/publish.yaml
+    with:
+      PROJECT_NAME: todos
+      APP: todos
+      ENVIRONMENT: stage
+  publish-prod:
+    if: ${{ github.event.push.ref == 'refs/heads/releases/**' }}
+    needs: [build]
+    uses: ./.github/workflows/publish.yaml
+    with:
+      PROJECT_NAME: todos
+      APP: todos
+      ENVIRONMENT: prod
