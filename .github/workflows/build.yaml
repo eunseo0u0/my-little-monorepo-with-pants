@@ -32,19 +32,16 @@ jobs:
         cache-lmdb-store: 'true'
 
     - name: Check BUILD files
-      working-directory: src/${{ inputs.PROJECT_NAME }}
       run: |
-        pants tailor --check update-build-files --check ::
+        pants tailor --check update-build-files --check src/${{ inputs.PROJECT_NAME }}:: tests/src/${{ inputs.PROJECT_NAME }}::
 
     - name: Lint
-      working-directory: src/${{ inputs.PROJECT_NAME }}
       run: |
-        pants lint ::
+        pants lint src/${{ inputs.PROJECT_NAME }}:: tests/src/${{ inputs.PROJECT_NAME }}::
 
     - name: Test
-      working-directory: src/${{ inputs.PROJECT_NAME }}
       run: |
-        pants test ::
+        pants test tests/src/${{ inputs.PROJECT_NAME }}
 
     - name: Upload pants log
       uses: actions/upload-artifact@v3
