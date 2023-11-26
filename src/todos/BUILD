@@ -22,6 +22,6 @@ docker_image(
     name="my-little-todo-app",
     dependencies=[":binary-deps", ":binary-srcs"],
     image_tags=["{build_args.GIT_COMMIT}"],
-    image_labels={"app": "{build_args.APP}", "phase": "{build_args.PHASE}"},
+    image_labels={"app": "{build_args.APP}", "environment": "{build_args.ENVIRONMENT}"},
     source="Dockerfile",
 )
