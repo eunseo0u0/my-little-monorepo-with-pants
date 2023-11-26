@@ -15,4 +15,3 @@ use_coverage = true
 
 [pytest]
 args = ["-vv", "--no-header"]
- 
