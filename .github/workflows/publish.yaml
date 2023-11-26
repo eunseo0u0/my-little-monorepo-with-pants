@@ -1,0 +1,41 @@
+name: Publish
+
+on:
+  workflow_call:
+    inputs:
+      PROJECT_NAME:
+        description: 'project name'
+        required: true
+        type: string
+      APP:
+        description: 'application name'
+        required: true
+        type: string
+      ENVIRONMENT:
+        description: 'development environment'
+        required: true
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set Pants CI config
+      run: echo "PANTS_CONFIG_FILES=pants.ci.toml" >> $GITHUB_ENV
+    
+    - name: Login to Docker
+      run: docker login --username=${{ secrets.USERNAME }} --password ${{ secrets.PASSWORD }}
+          
+    - name: Build & Push image
+      working-directory: src/${{ inputs.PROJECT_NAME }}
+      run: |
+        echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+        APP=${{ inputs.APP }} ENVIRONMENT=${{ inputs.ENVIRONMENT }} GIT_COMMIT=${{ steps.vars.outputs.sha_short }} pants publish Dockerfile
+    
+    - name: Upload pants log
+      uses: actions/upload-artifact@v3
+      with:
+        name: pants-log
+        path: .pants.d/pants.log
+      if: always()  # We want the log even on failures.
