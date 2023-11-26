@@ -1,0 +1,54 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      PROJECT_NAME:
+        description: 'project name'
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: Extract Python version and Set Pants CI config
+      run: |
+          echo "PYTHON_VERSION=$(grep -m 1 -oP '(?<=CPython==)([^"]+)' pants.toml)" >> $GITHUB_ENV
+          echo "PANTS_CONFIG_FILES=pants.ci.toml" >> $GITHUB_ENV
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          
+    - uses: pantsbuild/actions/init-pants@v5-scie-pants
+      # This action bootstraps pants and manages 2-3 GHA caches.
+      # See: github.com/pantsbuild/actions/tree/main/init-pants/
+      with:
+        gha-cache-key: v0
+        named-caches-hash: ${{ hashFiles('3rdparty/python-default.lock') }}
+        cache-lmdb-store: 'true'
+
+    - name: Check BUILD files
+      working-directory: src/${{ inputs.PROJECT_NAME }}
+      run: |
+        pants tailor --check update-build-files --check ::
+
+    - name: Lint
+      working-directory: src/${{ inputs.PROJECT_NAME }}
+      run: |
+        pants lint ::
+
+    - name: Test
+      working-directory: src/${{ inputs.PROJECT_NAME }}
+      run: |
+        pants test ::
+
+    - name: Upload pants log
+      uses: actions/upload-artifact@v3
+      with:
+        name: pants-log
+        path: .pants.d/pants.log
+      if: always()  # We want the log even on failures.

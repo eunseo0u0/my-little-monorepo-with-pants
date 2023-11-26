@@ -1,0 +1,17 @@
+[GLOBAL]
+dynamic_ui = false
+colors = true
+plugins = ["hdrhistogram"]
+
+remote_cache_read = false
+remote_cache_write = false
+
+[stats]
+log = true
+memory_summary = true
+
+[test]
+use_coverage = true
+
+[pytest]
+args = ["-vv", "--no-header"]
