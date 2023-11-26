@@ -24,7 +24,7 @@ macos = "//:local_env_macos"
 docker = "//:docker_env_linux"
 
 [docker]
-build_args = ["APP", "GIT_COMMIT", "PHASE"]
+build_args = ["APP", "ENVIRONMENT", "GIT_COMMIT",]
 run_args = "--rm -it"
 
 [source]
