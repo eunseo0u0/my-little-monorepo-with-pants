@@ -24,3 +24,4 @@ jobs:
       PROJECT_NAME: todos
       APP_NAME: todos
       ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'stage' || 'prod' }}
+    secrets: inherit
