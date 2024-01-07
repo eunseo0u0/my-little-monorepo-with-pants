@@ -1,5 +1,8 @@
 # :bookmark: My Little Todo App
-![test](https://github.com/github/docs/actions/workflows/todos.yml/badge.svg)
+<p>
+    <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" />
+    <img alt="Todos CI/CD" src="https://github.com/eunseo0u0/my-little-monorepo-with-pants/actions/workflows/todos.yaml/badge.svg" />
+</p>
 
 This project includes the simple CRUD todo API sources.
 The API defines with [FastAPI](https://fastapi.tiangolo.com/). 
@@ -82,4 +85,7 @@ $ make docker-build
 
 # Run docker container with Dockerfile in this project
 $ make docker-run
+
+# Push docker image to repository (need to sign in docker hub)
+$ REPOSITORY_NAME=*** make docker-push
 ```
