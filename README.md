@@ -1,6 +1,8 @@
 # My Little Monorepo with Pants
 <p>
-    <img alt="Python" src="https://img.shields.io/badge/Python-3.10-3776AB.svg?style=flat&logo=python&logoColor=white" />
+    <a href="https://www.python.org/">
+      <img alt="Python" src="https://img.shields.io/badge/Python-3.10-3776AB.svg?style=flat&logo=python&logoColor=white" />
+    </a>
     <a href="https://github.com/astral-sh/ruff">
       <img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" />
     </a>
@@ -9,6 +11,12 @@
     </a>
     <a href="https://github.com/PyCQA/docformatter">
       <img alt="Docformatter" src="https://img.shields.io/badge/%20formatter-docformatter-fedcba.svg" />
+    </a>
+    <a href="https://www.python.org/">
+      <img alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" />
+    </a>
+    <a href="https://www.python.org/">
+      <img alt="MacOS" src="https://img.shields.io/badge/mac%20os-000000?style=flat&logo=macos&logoColor=F0F0F0" />
     </a>
 </p>
 
