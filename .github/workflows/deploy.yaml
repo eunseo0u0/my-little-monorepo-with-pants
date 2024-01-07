@@ -15,11 +15,6 @@ on:
         description: 'development environment'
         required: true
         type: string
-      PYTHON_VERSION:
-        description: 'python version'
-        required: true
-        type: string
-
 jobs:
   publish:
     runs-on: ubuntu-20.04
