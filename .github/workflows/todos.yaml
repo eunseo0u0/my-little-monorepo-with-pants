@@ -19,7 +19,7 @@ jobs:
       PROJECT_NAME: ${{ env.PROJECT_NAME }}
   deploy:
     if: ${{ github.event_name == 'push' }}
-    needs: [build]
+    needs: [default]
     uses: ./.github/workflows/deploy.yaml
     with:
       PROJECT_NAME: ${{ env.PROJECT_NAME }}
