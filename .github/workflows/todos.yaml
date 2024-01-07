@@ -10,8 +10,6 @@ on:
       - "releases/**"
     paths:
       - "src/todos/**"
-env:
-  PROJECT_NAME: todos
 jobs:
   default:
     uses: ./.github/workflows/default.yaml
