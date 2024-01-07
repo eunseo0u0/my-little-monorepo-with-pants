@@ -48,7 +48,7 @@ jobs:
     - name: Build & Push image
       run: >
         APP=${{ inputs.APP_NAME }} ENVIRONMENT=${{ inputs.ENVIRONMENT }} GIT_COMMIT=${{ steps.git-commit.outputs.GIT_COMMIT }}
-        pants publish src/${{ inputs.PROJECT_NAME }}/Dockerfile --docker-default-repository=${{ secrets.USERNAME }}/{name}-{build_args.ENVIRONMENT}
+        pants publish src/${{ inputs.PROJECT_NAME }}/Dockerfile --docker-default-repository=${{ secrets.USERNAME }}/{name}/{build_args.ENVIRONMENT}
 
     - name: Upload pants log
       uses: actions/upload-artifact@v3
