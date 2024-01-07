@@ -11,7 +11,6 @@ on:
       - "releases/**"
     paths:
       - "src/todos/**"
-      - "tests/todos/**"
 jobs:
   default:
     uses: ./.github/workflows/default.yaml
