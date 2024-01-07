@@ -1,36 +1,27 @@
-name: Build and Publish - todos
+name: CI/CD - Todos
 
 on:
   pull_request:
     paths:
       - "src/todos/**"
-      - "!src/todos/README.md"
-      - "./github/workflows/todos.yaml"
   push:
     branches: 
       - main
       - "releases/**"
     paths:
       - "src/todos/**"
-      - "./github/workflows/todos.yaml"
+env:
+  PROJECT_NAME: todos
 jobs:
   build:
     uses: ./.github/workflows/build.yaml
     with:
-      PROJECT_NAME: todos
-  publish-stage:
-    if: ${{ github.event.push.ref == 'refs/heads/main' }}
+      PROJECT_NAME: ${{ env.PROJECT_NAME }}
+  publish:
+    if: ${{ github.event_name == 'push' }}
     needs: [build]
     uses: ./.github/workflows/publish.yaml
     with:
-      PROJECT_NAME: todos
-      APP: todos
-      ENVIRONMENT: stage
-  publish-prod:
-    if: ${{ github.event.push.ref == 'refs/heads/releases/**' }}
-    needs: [build]
-    uses: ./.github/workflows/publish.yaml
-    with:
-      PROJECT_NAME: todos
-      APP: todos
-      ENVIRONMENT: prod
+      PROJECT_NAME: ${{ env.PROJECT_NAME }}
+      APP_NAME: todos
+      ENVIRONMENT: ${{ github.ref == 'refs/heads/main' && 'stage' || 'prod' }}
