@@ -1,10 +1,13 @@
 # :bookmark: My Little Todo App
-![test](https://github.com/github/docs/actions/workflows/todos.yml/badge.svg)
+<p>
+    <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-0.104.1-009688.svg?style=flat&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com" />
+    <img alt="Docker" src="https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white" />
+    <img alt="Todos CI/CD" src="https://github.com/eunseo0u0/my-little-monorepo-with-pants/actions/workflows/todos.yaml/badge.svg" />
+</p>
 
-This project includes the simple CRUD todo API sources.
-The API defines with [FastAPI](https://fastapi.tiangolo.com/). 
+This project encompasses the source code for a straightforward CRUD todo API, defined using [FastAPI](https://fastapi.tiangolo.com/). 
 
-## How to use
+## How to run & use
 ### :one: Run the app server
 ```bash
 # Run main.py
@@ -68,7 +71,6 @@ $ curl -X 'DELETE' \
   -H 'accept: application/json'
 ```
 
-
 ## ETC
 ```bash
 # Formatting codes in this project
@@ -82,4 +84,7 @@ $ make docker-build
 
 # Run docker container with Dockerfile in this project
 $ make docker-run
+
+# Push docker image to a repository (need to sign in docker hub)
+$ REPOSITORY_NAME=*** make docker-push
 ```
