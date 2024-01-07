@@ -16,7 +16,7 @@ Welcome to "My Little Monorepo with Pants" -
 This repository contains an example of a monorepo with Python which utilizes a powerful tool, called [Pants](https://www.pantsbuild.org/). Feel free to explore, experiment, and adapt the practices demonstrated here to meet your specific development needs. Whether you're new to monorepos or Pants, this repository aims to be a valuable resource for enhancing your development workflow. 🚀✨
 
 ## Repository Highlights
-* **Pants**: This repository is built on the _**Pants**_ build system. It not only utilizes Pants for code execution but also for various tasks like code formatting, linting, and testing. Additionally, Pants is employed for building and pushing container images (with [Docker](https://docs.docker.com/), as well as managing dependencies.
+* **Pants**: This repository is built on the _**Pants**_ build system. It not only utilizes Pants for code execution but also for various tasks like code formatting, linting, and testing. Additionally, Pants is employed for building and pushing container images (with [Docker](https://docs.docker.com/)), as well as managing dependencies.
 
 * **Simple API Example**: Explore a straightforward CRUD API implemented with [FastAPI](https://github.com/tiangolo/fastapi). This example can be instrumental in understanding Python monorepo concepts.
 * **Automated Build**: A streamlined continuous integration (CI) and continuous delivery (CD) process is in place, automated through [GitHub Actions](https://docs.github.com/en/actions).
