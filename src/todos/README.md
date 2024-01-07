@@ -2,8 +2,6 @@
 <p>
     <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-0.104.1-009688.svg?style=flat&logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com" />
     <img alt="Docker" src="https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white" />
-</p>
-<p>
     <img alt="Todos CI/CD" src="https://github.com/eunseo0u0/my-little-monorepo-with-pants/actions/workflows/todos.yaml/badge.svg" />
 </p>
 
