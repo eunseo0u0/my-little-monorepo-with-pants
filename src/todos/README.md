@@ -1,13 +1,17 @@
 # :bookmark: My Little Todo App
 <p>
     <img alt="FastAPI" src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" />
+    <img alt="Swagger" src="https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white" />
+    <img alt="Docker" src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" />
+</p>
+<p>
     <img alt="Todos CI/CD" src="https://github.com/eunseo0u0/my-little-monorepo-with-pants/actions/workflows/todos.yaml/badge.svg" />
 </p>
 
 This project includes the simple CRUD todo API sources.
 The API defines with [FastAPI](https://fastapi.tiangolo.com/). 
 
-## How to use
+## How to run & use
 ### :one: Run the app server
 ```bash
 # Run main.py
@@ -70,7 +74,6 @@ $ curl -X 'DELETE' \
   'http://0.0.0.0:8000/todos/v1/delete/7d73b5f68af54d12977ff4f421c746d8' \ # item_id
   -H 'accept: application/json'
 ```
-
 
 ## ETC
 ```bash
