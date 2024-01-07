@@ -4,12 +4,14 @@ on:
   pull_request:
     paths:
       - "src/todos/**"
+      - "tests/todos/**"
   push:
     branches: 
       - main
       - "releases/**"
     paths:
       - "src/todos/**"
+      - "tests/todos/**"
 jobs:
   default:
     uses: ./.github/workflows/default.yaml
