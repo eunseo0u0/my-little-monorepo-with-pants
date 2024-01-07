@@ -1,4 +1,4 @@
-# :bookmark: My Little Todo App
+# :bookmark: My Little Todo App 
 ![test](https://github.com/github/docs/actions/workflows/todos.yml/badge.svg)
 
 This project includes the simple CRUD todo API sources.
