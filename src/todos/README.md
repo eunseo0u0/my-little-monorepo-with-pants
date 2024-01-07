@@ -86,6 +86,6 @@ $ make docker-build
 # Run docker container with Dockerfile in this project
 $ make docker-run
 
-# Push docker image to repository (need to sign in docker hub)
+# Push docker image to a repository (need to sign in docker hub)
 $ REPOSITORY_NAME=*** make docker-push
 ```
