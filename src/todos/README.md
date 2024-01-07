@@ -5,8 +5,7 @@
     <img alt="Todos CI/CD" src="https://github.com/eunseo0u0/my-little-monorepo-with-pants/actions/workflows/todos.yaml/badge.svg" />
 </p>
 
-This project includes the simple CRUD todo API sources.
-The API defines with [FastAPI](https://fastapi.tiangolo.com/). 
+This project encompasses the source code for a straightforward CRUD todo API, defined using [FastAPI](https://fastapi.tiangolo.com/). 
 
 ## How to run & use
 ### :one: Run the app server
