@@ -29,7 +29,7 @@ jobs:
       uses: actions/setup-python@v4
       with:
           python-version: ${{ env.PYTHON_VERSION }}
-          
+
     - uses: pantsbuild/actions/init-pants@v5-scie-pants
       # This action bootstraps pants and manages 2-3 GHA caches.
       # See: github.com/pantsbuild/actions/tree/main/init-pants/
@@ -44,12 +44,12 @@ jobs:
     - name: Get Git Commit
       id: git-commit
       run: echo "GIT_COMMIT=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-    
+
     - name: Build & Push image
-      working-directory: src/${{ inputs.PROJECT_NAME }}
-      run: |
-        APP=${{ inputs.APP_NAME }} ENVIRONMENT=${{ inputs.ENVIRONMENT }} GIT_COMMIT=${{ steps.git-commit.outputs.GIT_COMMIT }} pants publish Dockerfile
-    
+      run: >
+        APP=${{ inputs.APP_NAME }} ENVIRONMENT=${{ inputs.ENVIRONMENT }} GIT_COMMIT=${{ steps.git-commit.outputs.GIT_COMMIT }}
+        pants publish src/${{ inputs.PROJECT_NAME }}/Dockerfile
+
     - name: Upload pants log
       uses: actions/upload-artifact@v3
       with:
