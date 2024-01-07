@@ -1,24 +1,11 @@
 # My Little Monorepo with Pants
-<p>
-    <a href="https://www.python.org/">
-      <img alt="Python" src="https://img.shields.io/badge/Python-3.10-3776AB.svg?style=flat&logo=python&logoColor=white" />
-    </a>
-    <a href="https://github.com/astral-sh/ruff">
-      <img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" />
-    </a>
-    <a href="https://github.com/psf/black">
-      <img alt="Black" src="https://img.shields.io/badge/code%20style-black-000000.svg" />
-    </a>
-    <a href="https://github.com/PyCQA/docformatter">
-      <img alt="Docformatter" src="https://img.shields.io/badge/%20formatter-docformatter-fedcba.svg" />
-    </a>
-    <a href="https://www.python.org/">
-      <img alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black" />
-    </a>
-    <a href="https://www.python.org/">
-      <img alt="MacOS" src="https://img.shields.io/badge/mac%20os-000000?style=flat&logo=macos&logoColor=F0F0F0" />
-    </a>
-</p>
+
+[![Python](https://img.shields.io/badge/Python-3.10-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Docformatter](https://img.shields.io/badge/%20formatter-docformatter-fedcba.svg)](https://github.com/PyCQA/docformatter)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)](https://www.linux.org/)
+[![MacOS](https://img.shields.io/badge/mac%20os-000000?style=flat&logo=macos&logoColor=F0F0F0)](https://support.apple.com/ko-kr/macos)
 
 Welcome to "My Little Monorepo with Pants" -
 This repository contains an example of a monorepo with Python which utilizes a powerful tool, called [Pants](https://www.pantsbuild.org/). Feel free to explore, experiment, and adapt the practices demonstrated here to meet your specific development needs. Whether you're new to monorepos or Pants, this repository aims to be a valuable resource for enhancing your development workflow. 🚀✨
