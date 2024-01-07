@@ -17,10 +17,10 @@ jobs:
     uses: ./.github/workflows/build.yaml
     with:
       PROJECT_NAME: ${{ env.PROJECT_NAME }}
-  publish:
+  deploy:
     if: ${{ github.event_name == 'push' }}
     needs: [build]
-    uses: ./.github/workflows/publish.yaml
+    uses: ./.github/workflows/deploy.yaml
     with:
       PROJECT_NAME: ${{ env.PROJECT_NAME }}
       APP_NAME: todos
