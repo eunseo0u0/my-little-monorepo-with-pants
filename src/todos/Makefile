@@ -13,6 +13,9 @@ lint:
 test:
 	pants test ../../tests/src/$(APP_NAME)::
 
+test-with-coverage:
+	pants test ../../tests/src/$(APP_NAME):: --test-use-coverage
+
 docker-build:
 	APP=$(APP_NAME) ENVIRONMENT=dev GIT_COMMIT=$(IMAGE_TAG) pants package ./Dockerfile \
 		--docker-default-repository=$(REPOSITORY_NAME)/{name}-{build_args.ENVIRONMENT}
