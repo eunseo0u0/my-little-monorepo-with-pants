@@ -7,7 +7,7 @@ on:
         description: 'project name'
         required: true
         type: string
-      APP:
+      APP_NAME:
         description: 'application name'
         required: true
         type: string
@@ -31,7 +31,7 @@ jobs:
       working-directory: src/${{ inputs.PROJECT_NAME }}
       run: |
         echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-        APP=${{ inputs.APP }} ENVIRONMENT=${{ inputs.ENVIRONMENT }} GIT_COMMIT=${{ steps.vars.outputs.sha_short }} pants publish Dockerfile
+        APP=${{ inputs.APP_NAME }} ENVIRONMENT=${{ inputs.ENVIRONMENT }} GIT_COMMIT=${{ steps.vars.outputs.sha_short }} pants publish Dockerfile
     
     - name: Upload pants log
       uses: actions/upload-artifact@v3
