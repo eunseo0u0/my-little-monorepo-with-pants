@@ -13,8 +13,8 @@ on:
 env:
   PROJECT_NAME: todos
 jobs:
-  build:
-    uses: ./.github/workflows/build.yaml
+  default:
+    uses: ./.github/workflows/default.yaml
     with:
       PROJECT_NAME: ${{ env.PROJECT_NAME }}
   deploy:
